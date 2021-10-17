@@ -38,11 +38,6 @@ export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 
 exiterr() { echo "Error: $1" >&2; exit 1; }
 
-check_ip() {
-  IP_REGEX='^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$'
-  printf '%s' "$1" | tr -d '\n' | grep -Eq "$IP_REGEX"
-}
-
 check_root() {
   if [ "$(id -u)" != 0 ]; then
     exiterr "Script must be run as root. Try 'sudo sh $0'"
